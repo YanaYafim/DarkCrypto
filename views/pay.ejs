@@ -1,0 +1,52 @@
+<div class="pay">
+  <div class="container5">
+    <a href="/wallet" class="buttonR">← Back</a>
+    <h1 style="text-align: center; margin-bottom: 20px; margin-top: 20px;">PayPage</h1>
+    <label for="usdPayment">USD</label>
+    <input type="number" class="field" id="usdPayment" placeholder="USD" min="1" step="0.01" oninput="formatInput(this)">
+    <label class="crypto-coin" for="cryptoCoin">Coin</label>
+    <input type="number" class="field" id="cryptoCoin" placeholder="Coin" min="0" step="0.0000000001" oninput="formatInput(this)" readonly>
+    <div class="button-container5">
+      <button class="buttonPay" id="copyButton" onclick="buyButtonClick()">Buy</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function formatInput(input) {
+    if (input.id === "cryptoCoin") {
+      input.value = parseFloat(input.value).toFixed(10);
+    } else {
+      input.value = parseFloat(input.value).toFixed(2);
+    }
+  }
+
+  let coinValue = 1;
+  let usdValue = getCookie("price");
+  const btnBlock = document.querySelector(".button-container5");
+  const sss = getCookie("coin");
+  btnBlock.innerHTML = `<button class="buttonPay" id="copyButton" onclick="buyButtonClick('${sss}')">Buy</button>`;
+  const cryptoCoinInput = document.getElementById("cryptoCoin");
+  const cryptoCoinLabel = document.querySelector(".crypto-coin");
+  const usdPaymentInput = document.getElementById("usdPayment");
+  cryptoCoinInput.value = coinValue;
+  usdPaymentInput.value = usdValue;
+  cryptoCoinInput.placeholder = getCookie("coin");
+  cryptoCoinLabel.textContent = getCookie("coin");
+
+  function getCookie(name) {
+    const cookieValue = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return cookieValue ? cookieValue.pop() : null;
+  }
+
+  function buyButtonClick(coinName) {
+    try {
+      coinValue = cryptoCoinInput.value;
+      usdValue = usdPaymentInput.value;
+
+      window.location.href = `/pay/stripe?coinValue=${coinValue}&usdValue=${usdValue}&coinName=${coinName}`;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+</script>

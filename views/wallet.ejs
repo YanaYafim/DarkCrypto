@@ -1,0 +1,158 @@
+<div style="background-color: #000000;
+background-image: radial-gradient(at 78% 98%, rgb(0, 0, 0) 0, hsla(52, 94%, 68%, 0) 50%),
+radial-gradient(at 30% 69%, rgb(111, 36, 173) 0, hsla(253, 86%, 59%, 0) 50%),
+radial-gradient(at 40% 2%, rgb(0, 0, 0) 0, hsla(149, 91%, 70%, 0) 50%),
+radial-gradient(at 12% 5%, rgb(0, 0, 0) 0, hsla(265, 94%, 55%, 0) 50%),
+radial-gradient(at 17% 97%, rgb(0, 0, 0) 0, hsla(277, 85%, 66%, 0) 50%),
+radial-gradient(at 56% 49%, rgb(22, 9, 30) 0, hsla(218, 95%, 50%, 0) 50%),
+radial-gradient(at 23% 1%, rgb(136, 49, 202) 0, hsla(26, 88%, 64%, 0) 50%);">
+  <div id="parent">
+    <div class="menu">
+        <button class="active">Bitcoin</button>
+        <button>Ethereum</button>
+        <button>Dogecoin</button>
+        <button>Ripple</button>
+        <button>Shiba Inu</button>
+    </div>
+    <div class="tabs">
+        <div class="tab active">
+            <div class="content-container2">
+                <div class="cardwallet">
+                    <div class="info2">
+                        <h1 class="coin-name" style="margin-bottom: 20px; color:#ffe81e; -webkit-text-stroke: 2px rgb(251, 188, 0);">Bitcoin</h1>
+                        <p>Now you have: <strong><%= user.coins.Bitcoin %>$</strong></p>
+                    </div>
+                </div>
+                <div class="walletImg1">
+                    <div class="price2">
+                        <span id="btcPrice" class="priceC">$100</span>
+                        <span id="btcChange" class="priceU">-2.1%</span>
+                    </div>
+                    <div class="buttonBuy" style="display: flex; ">
+                        <button style="padding: 10px 45px;" onclick="handleBuyButtonClick('Bitcoin', parseFloat(document.getElementById('btcPrice').textContent.trim().replace('$', '')))">Buy BTC</button>
+                        <button style="padding: 10px 20px; margin-left: 20px;" onclick="handleBuyButtonClickCon('Bitcoin', parseFloat(document.getElementById('btcPrice').textContent.trim().replace('$', '')))">Convert BTC</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab">
+            <div class="content-container2">
+                <div class="cardwallet">
+                    <div class="info2">
+                        <h1 class="coin-name" style="margin-bottom: 20px; color:#416eff; -webkit-text-stroke: 1px rgb(140, 171, 255);">Ethereum</h1>
+                        <p>Now you have: <strong><%= user.coins.Ethereum %>$</strong></p>
+                    </div>
+                </div>
+                <div class="walletImg2">
+                    <div class="price2">
+                        <span id="ethPrice" class="priceC">$100</span>
+                        <span id="ethChange" class="priceU">-2.1%</span>
+                    </div>
+                    <div class="buttonBuy" style="display: flex;">
+                        <button style="padding: 10px 45px;" onclick="handleBuyButtonClick('Ethereum', parseFloat(document.getElementById('ethPrice').textContent.trim().replace('$', '')))">Buy ETH</button>
+                        <button style="padding: 10px 20px; margin-left: 20px;"  onclick="handleBuyButtonClickCon('Ethereum', parseFloat(document.getElementById('ethPrice').textContent.trim().replace('$', '')))">Convert ETH</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab">
+          <div class="content-container2">
+              <div class="cardwallet">
+                  <div class="info2">
+                      <h1 class="coin-name" style="margin-bottom: 20px; color:#ffd497; -webkit-text-stroke: 2px rgb(255, 166, 0);">Dogecoin</h1>
+                      <p>Now you have: <strong><%= user.coins.Dogecoin %>$</strong></p>
+                  </div>
+              </div>
+              <div class="walletImg3">
+                  <div class="price2">
+                    <span id="dogePrice" class="priceC">$100</span>
+                    <span id="dogeChange" class="priceU">-2.1%</span>
+                  </div>
+                  <div class="buttonBuy" style="display: flex;">
+                    <button style="padding: 10px 45px;"  onclick="handleBuyButtonClick('Dogecoin', parseFloat(document.getElementById('dogePrice').textContent.trim().replace('$', '')))">Buy DOGE</button>
+                    <button  style="padding: 10px 20px; margin-left: 20px;" onclick="handleBuyButtonClickCon('Dogecoin', parseFloat(document.getElementById('dogePrice').textContent.trim().replace('$', '')))">Convert DOGE</button>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="tab">
+        <div class="content-container2">
+            <div class="cardwallet">
+                <div class="info2">
+                    <h1 class="coin-name" style="margin-bottom: 20px; color:#b3b3b3; -webkit-text-stroke: 2px rgb(140, 140, 140);">Ripple</h1>
+                    <p>Now you have: <strong><%= user.coins.Ripple %>$</strong></p>
+                </div>
+            </div>
+            <div class="walletImg4">
+                <div class="price2">
+                    <span id="xrpPrice" class="priceC">$100</span>
+                    <span id="xrpChange" class="priceU">-2.1%</span>
+                </div>
+                <div class="buttonBuy" style="display: flex;">
+                    <button style="padding: 10px 45px;"  onclick="handleBuyButtonClick('Ripple', parseFloat(document.getElementById('xrpPrice').textContent.trim().replace('$', '')))">Buy XRP</button>
+                    <button  style="padding: 10px 20px; margin-left: 20px;" onclick="handleBuyButtonClickCon('Ripple', parseFloat(document.getElementById('xrpPrice').textContent.trim().replace('$', '')))">Convert XRP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab">
+      <div class="content-container2">
+          <div class="cardwallet">
+              <div class="info2">
+                  <h1 class="coin-name" style="margin-bottom: 20px; color:#fd4747; -webkit-text-stroke: 2px rgb(251, 0, 0);">Shiba Inu</h1>
+                  <p>Now you have: <strong><%= user.coins.ShibaInu %>$</strong></p>
+              </div>
+          </div>
+          <div class="walletImg5">
+              <div class="price2">
+               <span class="priceC" id="shibPrice">$100.00</span>
+                <span id="shibChange" class="priceU">-2.1%</span>
+              </div>
+              <div class="buttonBuy" style="display: flex;">
+                  <button style="padding: 10px 45px;"  onclick="handleBuyButtonClick('ShibaInu', parseFloat(document.getElementById('shibPrice').textContent.trim().replace('$', '')))">Buy SHIB</button>
+                  <button style="padding: 10px 20px; margin-left: 20px;"  onclick="handleBuyButtonClickCon('ShibaInu', parseFloat(document.getElementById('shibPrice').textContent.trim().replace('$', '')))">Convert SHIB</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+<script>
+    const tabContainer = document.querySelector("#parent");
+    const navList = tabContainer.querySelectorAll(".menu button");
+    const tabList = tabContainer.querySelectorAll(".tab");
+    
+    for (let i = 0; i < navList.length; i++) {
+        navList[i].addEventListener('click', (evt) => {
+            let currentLink = tabContainer.querySelector("button.active");
+            let currentTab = tabContainer.querySelector(".tab.active");
+    
+            currentLink.classList.remove("active");
+            navList[i].classList.add("active");
+    
+            currentTab.classList.remove("active");
+            tabList[i].classList.add("active");
+    
+            tabList[i].querySelector(".content-container2").classList.add("active");
+        });
+    }
+
+    function handleBuyButtonClick(coinName, price) {
+    try {
+        window.location.href = `/wallet/buy-crypto?coinName=${coinName}&price=${price}`;
+    } catch (error) {
+        console.log(error);
+    }
+    }
+
+    function handleBuyButtonClickCon(coinName, price) {
+    try {
+        window.location.href = `/convert?coinName=${coinName}&price=${price}`;
+    } catch (error) {
+        console.log(error);
+    }
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/tableCur.js"></script>
