@@ -150,12 +150,14 @@ module.exports.updateProf = async (req, res) => {
 
       if (username) user.userName = username;
       if (email) user.email = email;
-      if (newPassword.length >= 6) {
-          const salt = await bcrypt.genSalt();
-          let hashedPassword = await bcrypt.hash(newPassword, salt);
-          user.password = hashedPassword;
-      } else {
-          throw Error('Password length update error');
+      if (newPassword) {
+        if (newPassword.length >= 6) {
+            const salt = await bcrypt.genSalt();
+            let hashedPassword = await bcrypt.hash(newPassword, salt);
+            user.password = hashedPassword;
+        } else {
+            throw Error('Password length update error');
+        }
       }
 
       await user.save();
