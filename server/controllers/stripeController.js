@@ -43,8 +43,8 @@ const generatePurchaseLink = async (req, res) => {
         },
       ],
       mode: 'payment',
-      success_url: 'http://localhost:3000/pay/payment-success',
-      cancel_url: 'http://localhost:3000/pay',
+      success_url: `${process.env.WEBSITE_URL}/pay/payment-success`,
+      cancel_url: `${process.env.WEBSITE_URL}/pay`,
     });
     console.log(session.url);
     res.redirect(session.url);
