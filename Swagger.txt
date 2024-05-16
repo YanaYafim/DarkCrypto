@@ -94,6 +94,17 @@ paths:
         '401':
           description: Unauthorized access
 
+  /profile-delete:
+    delete:
+      tags: 
+        - Auth
+      summary: Delete user account
+      responses:
+        '200':
+          description: User deleted successfully
+        '401':
+          description: Unauthorized access
+
 components:
   schemas:
     User:
