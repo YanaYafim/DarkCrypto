@@ -110,6 +110,20 @@ exports.homepage = async (req, res) => {
     res.cookie('jwt', '', { maxAge: 1 });
     res.redirect('/');
   }
+
+  module.exports.deleteProf = async (req, res) => {
+    try {
+      const token = req.cookies.jwt;
+      const decodedToken = jwt.verify(token, 'net secret');
+      const userId = decodedToken.id;
+      await User.findByIdAndDelete(userId);
+      res.cookie('jwt', '', { maxAge: 1 });
+      res.json({ message: 'Account deleted successfully' });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Something went wrong' });
+    }
+  }
   
 module.exports.cur = async (req, res) => {
   try {

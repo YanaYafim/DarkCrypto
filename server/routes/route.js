@@ -20,19 +20,7 @@ router.get('/homeAfter', requireAuth, cController.cur);
 router.get('/profile', requireAuth, (req, res) => {
     res.render('profile', { user: res.locals.user });
 });
-router.delete('/profile-delete', requireAuth, async (req, res) => {
-  try {
-    const token = req.cookies.jwt;
-    const decodedToken = jwt.verify(token, 'net secret');
-    const userId = decodedToken.id;
-    await User.findByIdAndDelete(userId);
-    res.cookie('jwt', '', { maxAge: 1 });
-    res.json({ message: 'Account deleted successfully' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Something went wrong' });
-  }
-});
+router.delete('/profile-delete', requireAuth, cController.deleteProf);
 router.get('/wallet', requireAuth, (req, res) => {
   res.render('wallet');
 });
