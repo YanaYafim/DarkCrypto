@@ -94,7 +94,7 @@ paths:
         '401':
           description: Unauthorized access
 
-  /delete-account:
+  /profile-delete:
     delete:
       tags: 
         - Auth
