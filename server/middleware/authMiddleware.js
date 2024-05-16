@@ -5,7 +5,7 @@ const requireNonAuth = (req, res, next) => {
   const token = req.cookies.jwt;
 
   if (token) {
-      jwt.verify(token, "mettel bach secret", (error, decodedToken) => {
+      jwt.verify(token, "net secret", (error, decodedToken) => {
           if (error) {
               next();
           } else {
@@ -19,8 +19,6 @@ const requireNonAuth = (req, res, next) => {
 
 const requireAuth = (req, res, next) => {
   const token = req.cookies.jwt;
-
-  // check json web token exists & is verified
   if (token) {
     jwt.verify(token, 'net secret', (err, decodedToken) => {
       if (err) {
@@ -36,7 +34,6 @@ const requireAuth = (req, res, next) => {
   }
 };
 
-// check current user
 const checkUser = (req, res, next) => {
   const token = req.cookies.jwt;
   if (token) {
