@@ -10,6 +10,8 @@ const handleErrors = (err) => {
   // incorrect email
   if (err.message === 'incorrect email') {
     errors.email = 'That email is not registered';
+  } else if (err.message === 'Email already exists') {
+    errors.email = 'User with that email exists';
   }
 
   // incorrect password
@@ -24,12 +26,6 @@ const handleErrors = (err) => {
     errors.conversation = 'You have to buy more coins';
   } else if (err.message === 'Cannot convert 0') {
     errors.conversation = 'You cannot convert 0 coins';
-  }
-
-  // duplicate email error
-  if (err.code === 11000) {
-    errors.email = 'That email is already registered';
-    return errors;
   }
 
   // validation errors
@@ -76,18 +72,21 @@ exports.homepage = async (req, res) => {
   
   module.exports.signup_post = async (req, res) => {
     const { userName, email, password } = req.body;
-  
+
     try {
-      const user = await User.create({ userName, email, password });
-      const token = createToken(user._id);
-      res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-      res.status(201).json({ user: user._id });
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            throw new Error('Email already exists');
+        }
+
+        const user = await User.create({ userName, email, password });
+        const token = createToken(user._id);
+        res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
+        res.status(201).json({ user: user._id });
+    } catch (err) {
+        const errors = handleErrors(err);
+        res.status(400).json({ errors });
     }
-    catch(err) {
-      const errors = handleErrors(err);
-      res.status(400).json({ errors });
-    }
-   
   }
   
   module.exports.login_post = async (req, res) => {
