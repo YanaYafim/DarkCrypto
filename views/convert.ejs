@@ -12,8 +12,9 @@
         <div class="convert-error"></div>
         <div class="convert-success"></div>
         <h1 style="text-align: center; margin-bottom: 20px; margin-top: 20px;">Coin Converter</h1>
+        <p class="val"></p>
         <label for="usdPayment" id="coinLabel">From</label>
-        <input style="border: 2px solid rgb(146, 38, 213);" type="number" class="field" id="usdPayment" placeholder="From" min="1" step="0.0000000001" oninput="formatInput(this); updateConversion()">
+        <input style="border: 2px solid rgb(146, 38, 213);" type="number" class="field" id="usdPayment" placeholder="From" min="0.0000000001" step="0.0000000001" oninput="formatInput(this); updateConversion()">
         <label class="crypto-coin" for="cryptoCoin">Coin</label>
         <input style="border: 2px solid rgb(146, 38, 213);" type="text" class="field" id="To" placeholder="To" readonly>
         <select class="form-select form-select-sm" style="width: 40%; padding: 10px; border-radius: 20px; text-align: center; font-size: 20px; margin-bottom: 20px;" id="cryptoList" onchange="updateConversion()"></select>
@@ -57,7 +58,7 @@
         const fromValue = document.getElementById('usdPayment').value;
         const toCurrency = document.getElementById('cryptoList').value;
         let price;
-
+       
         switch (toCurrency) {
             case 'Bitcoin':
                 price = btcPrice;
@@ -87,12 +88,57 @@
         const cryptoList = document.getElementById('cryptoList');
         const coins = ['Bitcoin', 'ShibaInu', 'Ripple', 'Dogecoin', 'Ethereum'];
 
+        let val = document.querySelector('.val');
+        let us = document.getElementById('usdPayment');
+
         coins.forEach(function(coin) {
             if (coin !== coinCookie) {
                 const option = document.createElement('option');
                 option.value = coin;
                 option.text = coin;
                 cryptoList.add(option);
+            }
+
+            if (coinCookie === 'Bitcoin') {
+                val.innerHTML = '<p class="val" style="color: black;">You have <%= user.coins.Bitcoin %>BTC</p>';
+                us.setAttribute('min', '0.0000000001');
+                us.setAttribute('step', '0.0000000001');
+                us.addEventListener('input', function() {
+                    formatInput(this);
+                    updateConversion();
+                });
+            } else if (coinCookie === 'ShibaInu') {
+                val.innerHTML = '<p class="val" style="color: black;">You have <%= user.coins.ShibaInu %>SHIB</p>';
+                us.setAttribute('min', '0.0000000001');
+                us.setAttribute('step', '0.0000000001');
+                us.addEventListener('input', function() {
+                    formatInput(this);
+                    updateConversion();
+                });
+            } else if (coinCookie === 'Ripple') {
+                val.innerHTML = '<p class="val" style="color: black;">You have <%= user.coins.Ripple %>XRP</p>';
+                us.setAttribute('min', '0.0000000001');
+                us.setAttribute('step', '0.0000000001');
+                us.addEventListener('input', function() {
+                    formatInput(this);
+                    updateConversion();
+                });
+            } else if (coinCookie === 'Dogecoin') {
+                val.innerHTML = '<p class="val" style="color: black;">You have <%= user.coins.Dogecoin %>DOGE</p>';
+                us.setAttribute('min', '0.000001');
+                us.setAttribute('step', '0.000001');
+                us.addEventListener('input', function() {
+                    formatInput(this);
+                    updateConversion();
+                });
+            } else if (coinCookie === 'Ethereum') {
+                val.innerHTML = '<p class="val" style="color: black;">You have <%= user.coins.Ethereum %>ETH</p>';
+                us.setAttribute('min', '0.0000000001');
+                us.setAttribute('step', '0.0000000001');
+                us.addEventListener('input', function() {
+                    formatInput(this);
+                    updateConversion();
+                });
             }
         });
 
