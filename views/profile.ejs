@@ -1,11 +1,14 @@
 <div class="profile">
   <div class="profileDane">
       <div class="profileDane1">
+        <% if (user) { %>
               <h1>Hello, <%= user.userName %>!</h1>
+              <% } %>
               <section>
                   <h3>That is your information</h3>
-                  <ul>
+                  <ul><% if (user) { %>
                       <li><strong>Email:</strong> <%= user.email %></li>
+                      <% } %>
                   </ul>
               </section> 
       </div>
