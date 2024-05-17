@@ -46,6 +46,7 @@ const generatePurchaseLink = async (req, res) => {
       success_url: `${process.env.WEBSITE_URL}/pay/payment-success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${process.env.WEBSITE_URL}/pay`,
     });
+    
     console.log(session.url);
     res.redirect(session.url);
   } catch (error) {

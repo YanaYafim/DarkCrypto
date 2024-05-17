@@ -209,8 +209,8 @@ module.exports.updateConversion = async (req, res) => {
         throw new Error("Cannot convert 0");
       }
 
-      user.coins[coinTo] += parsedValueTo;
-      user.coins[coinFrom] -= parsedValueFrom;
+      user.coins[coinTo] = (user.coins[coinTo] + parsedValueTo).toFixed(10);
+      user.coins[coinFrom] = (user.coins[coinFrom] - parsedValueFrom).toFixed(10);
 
       await user.save();
 

@@ -9,7 +9,7 @@ const requireNonAuth = (req, res, next) => {
           if (error) {
               next();
           } else {
-              res.redirect("/account");
+              res.redirect("/profile");
           }
       });
   } else {
