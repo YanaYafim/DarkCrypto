@@ -32,6 +32,7 @@
     });
 
     let btcPrice, ethPrice, dogePrice, xrpPrice, shibPrice;
+    let selectedCoin;
 
     function getMarketData() {
         getCryptoCompare();
@@ -58,7 +59,7 @@
         const fromValue = document.getElementById('usdPayment').value;
         const toCurrency = document.getElementById('cryptoList').value;
         let price;
-       
+
         switch (toCurrency) {
             case 'Bitcoin':
                 price = btcPrice;
@@ -77,14 +78,16 @@
                 break;
         }
 
-        if (!isNaN(fromValue) && !isNaN(price)) {
-            const convertedValue = (fromValue * 100) / price;
+        if (!isNaN(fromValue) && !isNaN(price) && !isNaN(selectedCoin)) {
+            const convertedValue = (fromValue * selectedCoin) / price;
             document.getElementById('To').value = convertedValue.toFixed(10);
         }
     }
 
     document.addEventListener('DOMContentLoaded', function() {
         const coinCookie = getCookie('coin');
+        const priceCookie = getCookie('price');
+        selectedCoin=parseFloat(priceCookie);
         const cryptoList = document.getElementById('cryptoList');
         const coins = ['Bitcoin', 'ShibaInu', 'Ripple', 'Dogecoin', 'Ethereum'];
 
