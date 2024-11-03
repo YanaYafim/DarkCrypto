@@ -1,20 +1,30 @@
 # DarkCrypto
 ## Temat Projektu
-**DarkCrypto Auth API** to projekt, który udostępnia interfejs do uwierzytelniania użytkowników w aplikacji DarkCrypto. Pozwala użytkownikom rejestrować się, logować, wylogowywać oraz uzyskiwać i aktualizować informacje o profilu użytkownika. Projekt implementuje RESTful API z użyciem OpenAPI (Swagger) do dokumentowania i testowania punktów końcowych.
+**DarkCrypto** to projekt, który umożliwia użytkownikom interakcję z rynkiem kryptowalut poprzez intuicyjne funkcje rejestracji, zarządzania kontem, śledzenia cen kryptowalut w czasie rzeczywistym oraz dokonywania zakupów i konwersji kryptowalut. 
+
+## Funkcje aplikacji
+### 1.Rejestracja i logowanie
+Użytkownicy mogą założyć konto, rejestrując się w aplikacji, oraz logować się na swoje profile, co umożliwia im dostęp do funkcji personalizowanych, takich jak zarządzanie profilem oraz śledzenie swoich transakcji.
+### 2.Zarządzanie profilem użytkownika
+Aplikacja umożliwia użytkownikom edycję podstawowych informacji profilowych, takich jak:
+- Nazwa użytkownika
+- Adres e-mail
+- Hasło
+### 3.Śledzenie cen kryptowalut w czasie rzeczywistym
+Główna strona zawiera tabelę z aktualnymi danymi na temat cen kryptowalut. Ceny są pobierane za pomocą zewnętrznego API, co pozwala użytkownikom obserwować zmiany na rynku w czasie rzeczywistym oraz śledzić trend wzrostu lub spadku wartości wybranych kryptowalut.
+### 4.Zakup kryptowalut
+Użytkownicy mogą kupować kryptowaluty bezpośrednio z poziomu aplikacji. Transakcje są przeprowadzane bezpiecznie, a użytkownicy mają możliwość dostosowania kwoty zakupu oraz wyboru kryptowaluty.
+### 5.Konwersja kryptowalut
+Aplikacja pozwala użytkownikom konwertować posiadane kryptowaluty na inne dostępne waluty cyfrowe.
 
 ## Autorzy
 - Yana Yafimava, nr. 44102
 - Karyna Miadouskaya, nr. 44967
 - Bohdana Yablinchuk, nr. 44101
 
-## Technologie
-- Node.js
-- Express.js
-- MongoDB
-
 ## Instalacja i uruchomienie projektu
 ### Wymagania
-- Zainstaluj [Docker](https://www.docker.com/get-started) i [Docker Compose](https://docs.docker.com/compose/install/).
+- Zainstaluj [Docker](https://www.docker.com/get-started)
 - Upewnij się, że masz dostęp do Internetu, aby pobrać niezbędne obrazy Docker.
 
 ### Kroki do uruchomienia
