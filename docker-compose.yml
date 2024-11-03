@@ -12,7 +12,8 @@ services:
       - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
       - WEBSITE_URL=${WEBSITE_URL}
     volumes:
-      - .:/app
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
     command: npm start
 
   mongodb:
