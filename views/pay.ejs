@@ -41,18 +41,24 @@
 
   function buyButtonClick(coinName) {
     try {
-      coinValue = cryptoCoinInput.value;
-      usdValue = usdPaymentInput.value;
+        coinValue = cryptoCoinInput.value;
+        usdValue = usdPaymentInput.value;
 
-      if (parseFloat(usdValue) < 1) {
-        alert('The minimum payment amount is $1. Please enter a larger amount.'); 
-        return; 
-      }
+        if (!usdValue || parseFloat(usdValue) <= 0) {
+            alert('Please enter an amount greater than zero.'); 
+            return; 
+        }
 
-      window.location.href = `/pay/stripe?coinValue=${coinValue}&usdValue=${usdValue}&coinName=${coinName}`;
+        if (parseFloat(usdValue) < 1) {
+            alert('The minimum payment amount is $1. Please enter a larger amount.');
+            return; 
+        }
+
+        window.location.href = `/pay/stripe?coinValue=${coinValue}&usdValue=${usdValue}&coinName=${coinName}`;
     } catch (error) {
-      console.log(error);
+        console.log(error);
     }
-  }
+}
+
 </script>
 <script src="js/convertFromToPay.js"></script>
