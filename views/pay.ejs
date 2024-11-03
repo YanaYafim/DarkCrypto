@@ -44,6 +44,11 @@
       coinValue = cryptoCoinInput.value;
       usdValue = usdPaymentInput.value;
 
+      if (parseFloat(usdValue) < 1) {
+        alert('The minimum payment amount is $1. Please enter a larger amount.'); 
+        return; 
+      }
+
       window.location.href = `/pay/stripe?coinValue=${coinValue}&usdValue=${usdValue}&coinName=${coinName}`;
     } catch (error) {
       console.log(error);
