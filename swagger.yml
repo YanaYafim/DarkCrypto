@@ -7,8 +7,8 @@ info:
     email: tablet.ejv@gmail.com
   version: 1.0.11
 servers:
-  - url: https://darkcrypto-94396d485a2e.herokuapp.com
-    description: DarkCrypto WebSite
+  - url: http://localhost:3000
+    description: Local Development Server
 tags:
   - name: Auth
     description: API for user registration, login, logout, user profile management

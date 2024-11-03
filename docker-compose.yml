@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGODB_URI=mongodb://my_mongodb:27017/crypto
+      - STRIPE_SECRET_KEY=${STRIPE_SECRET_KEY}
+      - WEBSITE_URL=${WEBSITE_URL}
+    volumes:
+      - .:/app
+    command: npm start
+
+  mongodb:
+    image: mongo
+    container_name: my_mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
